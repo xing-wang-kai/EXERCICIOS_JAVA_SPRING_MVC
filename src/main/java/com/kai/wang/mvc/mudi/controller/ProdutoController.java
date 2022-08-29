@@ -33,17 +33,9 @@ public class ProdutoController {
 		{
 			return "pedido/formulario";
 		}
-		String nome = requestProduto.getNomeProduto();
-		String urlProdut = requestProduto.getUrlProduto();
-		String urlImagem = requestProduto.getUrlImage();
-		String descricão = requestProduto.getDescricao();
 		
-		Produto produto = new Produto();
-		produto.setNome(nome);
-		produto.setUrlProduto(urlProdut);
-		produto.setUrlImagem(urlImagem);
-		produto.setDescricao(descricão);
-		
+		Produto produto = requestProduto.toProduto();
+
 		produtoService.adicionar(produto);
 		return "redirect:/home";
 	}

@@ -12,16 +12,16 @@
                         <div class="collapse navbar-collapse" id="navbarText">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item"> 
-                                    <a class="nav-link active" aria-current="page" href="#">Todos</a>
+                                    <a class="nav-link active" aria-current="page" href="/home">Todos</a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="nav-link" aria-current="page" href="#">Aguardando</a>
+                                    <a th:classappend="${status} == 'aguardando' ? 'active'" class="nav-link" aria-current="page" href="/home/aguardando">Aguardando</a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="nav-link" aria-current="page" href="#">Aprovado</a>
+                                    <a th:classappend="${status} == 'aprovados' ? 'active'" class="nav-link" aria-current="page" href="/home/aprovados">Aprovado</a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="nav-link" aria-current="page" href="#">Entregue</a>
+                                    <a th:classappend="${status} == 'entregues' ? 'active'" class="nav-link" aria-current="page" href="/home/entregues">Entregue</a>
                                 </li>
                             </ul>
                         </div>
@@ -32,9 +32,11 @@
         </div>
 
         <div class="card mt-3" th:each="produto : ${produtos}">
-
-            <div class="card-header alert alert-warning" th:text="${produto.nome}">Nome do Produto</div>
-            
+            <th:block th:switch="${produto.status.name()}">
+                 <div th:case="'AGUARDANDO'" class="card-header alert alert-warning" th:text="${produto.nome}">Nome do Produto</div>
+                 <div th:case="'APROVADOS'" class="card-header alert alert-success" th:text="${produto.nome}">Nome do Produto</div>
+                 <div th:case="'ENTREGUES'" class="card-header alert alert-info" th:text="${produto.nome}">Nome do Produto</div>
+            </th:block>
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-9">
@@ -57,7 +59,5 @@
         </div>
     </div>
 </body>
-<footer>
-    Feito com por kai Wang! <img src="https://github.com/xing-wang-kai/EXERCICIOS_JAVA_SPRING_BOOT_CL/blob/main/src/main/img/kai06.png" alt="imagen do kai"/>
-</footer>
+<div th:replace="~{base :: rodape}"></div>
 </html>

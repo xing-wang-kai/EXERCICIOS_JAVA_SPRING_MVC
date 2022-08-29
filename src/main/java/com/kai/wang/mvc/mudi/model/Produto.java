@@ -54,6 +54,10 @@ public class Produto {
 	public String getUrlImagem() {
 		return urlImagem;
 	}
+	public Status getStatus() {
+		return status;
+	}
+
 	public void setUrlImagem(String urlImagem) {
 		this.urlImagem = urlImagem;
 	}
@@ -68,6 +72,11 @@ public class Produto {
 	}
 	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+		
 	}
 
 }

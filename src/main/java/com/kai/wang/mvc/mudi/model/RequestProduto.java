@@ -45,5 +45,14 @@ public class RequestProduto {
 				+ ", url Produto: " + this.getUrlProduto()
 				+ ", url Imagem: " + this.getUrlImage();
 	}
+	public Produto toProduto() {
+		Produto produto = new Produto();
+		produto.setNome(this.getNomeProduto());
+		produto.setUrlProduto(this.getUrlProduto());
+		produto.setUrlImagem(this.getUrlImage());
+		produto.setDescricao(this.getDescricao());
+		produto.setStatus(Status.AGUARDANDO);
+		return produto;
+	}
 	
 }

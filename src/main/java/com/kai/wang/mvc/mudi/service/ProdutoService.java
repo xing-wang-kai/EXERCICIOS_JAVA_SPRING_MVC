@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kai.wang.mvc.mudi.model.Produto;
+import com.kai.wang.mvc.mudi.model.Status;
 import com.kai.wang.mvc.mudi.repository.ProdutoRepository;
 
 @Service
@@ -33,5 +34,10 @@ public class ProdutoService {
 	public void remover(Long id) 
 	{
 		this.pr.deleteById(id);
+	}
+
+	public List<Produto> findByStatus(Status status) {
+		List<Produto> produtos = this.pr.findByStatus(status);
+		return produtos;
 	}
 }
