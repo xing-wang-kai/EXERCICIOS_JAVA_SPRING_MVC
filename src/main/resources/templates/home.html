@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: cabecalho}"></head>
+<div th:replace="~{base :: basecabecalho}"></div>
+<body >
+    <div class="container-sm">
+        <div class="mb3">
+            <div th:replace="~{base :: jumbotron('Meus Pedido')}"></div>
+            <div>
+                <nav class="navbar navbar-expand-sm bg-light">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"> 
+                                    <a class="nav-link active" aria-current="page" href="#">Todos</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link" aria-current="page" href="#">Aguardando</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link" aria-current="page" href="#">Aprovado</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link" aria-current="page" href="#">Entregue</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="nav-link" aria-current="page" href="pedido/formulario"><button type="button" class="btn btn-outline-secondary">Novo</button></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="card mt-3" th:each="produto : ${produtos}">
+
+            <div class="card-header alert alert-warning" th:text="${produto.nome}">Nome do Produto</div>
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-9">
+                        <div class="row">
+                            <div class="col-md-6">Valor: <span th:text="${produto.valor}">200.99</span></div>
+                            <div class="col-md-6">Data Entrega: <span th:text="${produto.dataEntrega}">12/15/1990</span></div>
+                        </div>
+                        <Label for="urlProduto">Produto: </Label>
+                            <input class="form-control" name="urlProduto" id="urlProduto" th:value="${produto.urlProduto}" value="Url do Produto"/>
+                        <div>
+                            <label for="descricao">Discrição: </label>
+                            <textarea class="form-control"  th:text="${produto.descricao}" id="descricao" name="descricao" >Descrição do produto</textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-3 mt-3">
+                        <img class="img-thumbnail" th:src="${produto.urlImagem}" src="..." alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    Feito com por kai Wang! <img src="https://github.com/xing-wang-kai/EXERCICIOS_JAVA_SPRING_BOOT_CL/blob/main/src/main/img/kai06.png" alt="imagen do kai"/>
+</footer>
+</html>

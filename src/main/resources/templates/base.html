@@ -1,0 +1,27 @@
+<head th:fragment="cabecalho">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <title>Home Mudi</title>
+</head>
+
+
+<header th:fragment="basecabecalho">
+    <div class="p-3 mb-2 bg-primary text-white d-flex justify-content-between">
+        <div>
+            <h1>MUDI</h1>
+        </div>
+        <div class="mt-3">
+            <a>LOGOUT</a>
+        </div>
+    </div>
+</header>
+
+<div th:fragment="jumbotron(value)" class="jumbotron jumbotron-fluid p-3 mb-0 bg-dark text-white">
+    <div class="container">
+         <h2 th:text="${value}" class="display-4"></h2>
+    </div>
+</div>
