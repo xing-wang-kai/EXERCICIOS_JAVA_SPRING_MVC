@@ -40,4 +40,8 @@ public class ProdutoService {
 		List<Produto> produtos = this.pr.findByStatus(status);
 		return produtos;
 	}
+	public List<Produto> buscarPorUser(String user)
+	{
+		return this.pr.findByUser(user);
+	}
 }

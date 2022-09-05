@@ -12,10 +12,12 @@
 <header th:fragment="basecabecalho">
     <div class="p-3 mb-2 bg-primary text-white d-flex justify-content-between">
         <div>
-            <h1>MUDI</h1>
+            <a class="text-light" href="/home"><h1>MUDI</h1></a>
         </div>
         <div class="mt-3">
-            <a>LOGOUT</a>
+            <a class="text-light" sec:authorize="!isAuthenticated()" href="/login">Login</a>
+            <a onclick="document.querySelector('#form-login').submit()" class="text-light" sec:authorize="isAuthenticated()" href="#">Logout</a>
+            <form id="form-login" th:action="@{/logout}" method="post" ></form>
         </div>
     </div>
 </header>
@@ -26,6 +28,14 @@
     </div>
 </div>
 
-<footer th:fragment="rodape" class="p-3 mb-2 bg-secondary text-white mt-3 mb-0">
+<footer th:fragment="rodape" class="p-3 mb-2 bg-secondary text-white mt-3 mb-0 rodape">
+    <style>
+        .rodape{
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
     Feito com ♥ por kai Wang! <img src="https://github.com/xing-wang-kai/EXERCICIOS_JAVA_SPRING_BOOT_CL/blob/main/src/main/img/kai06.png" alt="imagen do kai"/>
 </footer>

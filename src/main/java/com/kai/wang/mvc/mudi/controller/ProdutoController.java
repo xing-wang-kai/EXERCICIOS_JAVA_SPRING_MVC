@@ -14,19 +14,19 @@ import com.kai.wang.mvc.mudi.model.RequestProduto;
 import com.kai.wang.mvc.mudi.service.ProdutoService;
 
 @Controller
-@RequestMapping(value="/pedido")
+@RequestMapping("pedido")
 public class ProdutoController {
 	
 	@Autowired
 	private ProdutoService produtoService;
 	
-	@GetMapping(value="/formulario")
+	@GetMapping("formulario")
 	public String formularioCadastro(RequestProduto requestProduto)
 	{
 		return "pedido/formulario";
 	}
 	
-	@PostMapping(value="/novo")
+	@PostMapping("novo")
 	public String novo(@Valid RequestProduto requestProduto, BindingResult result)
 	{
 		if(result.hasErrors())
