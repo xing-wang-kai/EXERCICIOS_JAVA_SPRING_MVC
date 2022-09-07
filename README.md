@@ -5,15 +5,16 @@
 <h1 align="center" class="Título-e-Imagem-de-capa"> PROJETO SPRING MVC E SPRING SECURITY </h1>
 
 ___
-
-<img src="https://img.shields.io/badge/spring-spring%20MVC-green"/>
-<img src="https://img.shields.io/badge/spring-security-yellow"/>
-<img src="https://img.shields.io/badge/th-thymeleaf-pink"/>
-<img src="https://img.shields.io/badge/version-1.2-blue"/>
-<img src="https://img.shields.io/badge/status-desenvolvimento-informational"/>
-<img src="https://img.shields.io/badge/autor-kai%20wang-ff69b4"/>
-<img src="https://img.shields.io/badge/release%20date-agosto-9cf"/>
+<div style="{display:inline_block}" align="center">
+    <img src="https://img.shields.io/badge/spring-spring%20MVC-green"/>
+    <img src="https://img.shields.io/badge/spring-security-yellow"/>
+    <img src="https://img.shields.io/badge/th-thymeleaf-pink"/>
+    <img src="https://img.shields.io/badge/version-1.2-blue"/>
+    <img src="https://img.shields.io/badge/status-desenvolvimento-informational"/>
+    <img src="https://img.shields.io/badge/autor-kai%20wang-ff69b4"/>
+    <img src="https://img.shields.io/badge/release%20date-agosto-9cf"/>
 <img src=""/>
+</br>
 
 ## Índice 
 
