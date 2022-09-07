@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,7 @@ public class UserController {
 		
 		String nome = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user = userService.buscarUsuario(nome);
-		List<Produto> produtos =  produtoService.buscarPorUser(user);
+		Page<Produto> produtos =  produtoService.buscarPorUser(user);
 		
 		model.addAttribute("produtos", produtos);
 		

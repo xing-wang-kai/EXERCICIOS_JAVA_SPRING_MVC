@@ -2,6 +2,8 @@ package com.kai.wang.mvc.mudi.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +18,8 @@ public interface ProdutoRepository extends PagingAndSortingRepository<Produto, L
 	//@Query(value="SELECT * FROM produto WHERE user_username = :username", nativeQuery=true)
 	//List<Produto> findByUser(@Param("username")String username);
 	
-	List<Produto> findByStatus(Status status);
-	List<Produto> findByUser(User user);
+	Page<Produto> findByStatus(Status status, Pageable pagina);
+	Page<Produto> findByUser(User user, Pageable pagina);
 	List<Produto> findByStatusAndUser(Status status, User user);
 
 }

@@ -9,11 +9,15 @@ ___
     <img src="https://img.shields.io/badge/spring-spring%20MVC-green"/>
     <img src="https://img.shields.io/badge/spring-security-yellow"/>
     <img src="https://img.shields.io/badge/th-thymeleaf-pink"/>
+    <img src="https://img.shields.io/badge/MAVEM-final-red"/>
+    <img src="https://img.shields.io/badge/MySQL-8.0.30-cian"/>
+    <img src="https://img.shields.io/badge/Vues-final-00FFFF"/>
     <img src="https://img.shields.io/badge/version-1.2-blue"/>
     <img src="https://img.shields.io/badge/status-desenvolvimento-informational"/>
     <img src="https://img.shields.io/badge/autor-kai%20wang-ff69b4"/>
     <img src="https://img.shields.io/badge/release%20date-agosto-9cf"/>
-<img src=""/>
+    <img src=""/>
+    
 </div>
 
 ## Índice 
@@ -51,5 +55,14 @@ O projeto também ultiliza SPRING SECURITY que será responsável pelo sistema d
 ## Funcionalidades e Demonstração da Aplicação
 ## Acesso ao Projeto
 ## Tecnologias utilizadas
+
+### SPRING MVC
+### SPRING SEGURITY
+### JDBC e JPA
+### MySQL
+### MAVEM
+### thymeleaf
+### VUES
+
 ## Pessoas Contribuidoras e Desenvolvedoras do Projeto
 ## Licença

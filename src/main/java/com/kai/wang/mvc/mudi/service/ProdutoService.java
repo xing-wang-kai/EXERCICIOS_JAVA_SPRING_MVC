@@ -3,6 +3,10 @@ package com.kai.wang.mvc.mudi.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.kai.wang.mvc.mudi.model.Produto;
@@ -38,14 +42,16 @@ public class ProdutoService {
 		this.pr.deleteById(id);
 	}
 
-	public List<Produto> buscarPorStatus(Status status) {
+	public Page<Produto> buscarPorStatus(Status status) {
 		
-		List<Produto> produtos = this.pr.findByStatus(status);
+		Pageable pagina = PageRequest.of(0, 3, Sort.by(Sort.Direction.ASC, "status"));
+		Page<Produto> produtos = this.pr.findByStatus(status, pagina);
 		return produtos;
 	}
-	public List<Produto> buscarPorUser(User user)
+	public Page<Produto> buscarPorUser(User user)
 	{
-		return this.pr.findByUser(user);
+		Pageable pagina = PageRequest.of(0, 3, Sort.by(Sort.Direction.ASC, "status"));
+		return this.pr.findByUser(user, pagina);
 	}
 
 	public List<Produto> buscarPorStatusEUser(Status status, User user){
