@@ -14,7 +14,7 @@ ___
     <img src="https://img.shields.io/badge/autor-kai%20wang-ff69b4"/>
     <img src="https://img.shields.io/badge/release%20date-agosto-9cf"/>
 <img src=""/>
-</br>
+</div>
 
 ## Índice 
 
