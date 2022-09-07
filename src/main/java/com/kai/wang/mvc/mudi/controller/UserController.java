@@ -16,21 +16,34 @@ import com.kai.wang.mvc.mudi.model.Status;
 import com.kai.wang.mvc.mudi.service.ProdutoService;
 
 @Controller
-@RequestMapping(value="home")
-public class HomeController {
-	
+@RequestMapping("usuario")
+public class UserController {
 	@Autowired
 	private ProdutoService produtoService;
 	
-	@GetMapping
+	@GetMapping("produto")
 	public String home(Model model, Principal principal)
 	{
 		
-		List<Produto> produtos =  produtoService.findByStatus(Status.ENTREGUES);
+		List<Produto> produtos =  produtoService.buscarPorUser(principal.getName());
 		
 		model.addAttribute("produtos", produtos);
 		
-		return "home";
+		return "usuario/home";
 	}
 	
+	@GetMapping("produto/{status}")
+	public String status(@PathVariable("status") String status, Model model, Principal principal)
+	{
+		System.out.println(status);
+		List<Produto> produtos = produtoService.findByStatusAndUser(Status.valueOf(status.toUpperCase()), principal.getName());
+		model.addAttribute("produtos", produtos);
+		return "usuario/home";
+	}
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public String onError()
+	{
+		return "redirect:/home";
+	}
 }

@@ -23,16 +23,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	{
 		http
 			.authorizeRequests()
+				.antMatchers("/home/**")
+				.permitAll()
 				.anyRequest().authenticated()
 			.and()
 				.formLogin( form -> form
 						.loginPage("/login")
-						.defaultSuccessUrl("/home", true)
+						.defaultSuccessUrl("/usuario/produto", true)
 						.permitAll()
 						)
 				.logout(logout -> 
 						logout.logoutUrl("/logout")
-						);
+						)
+				.csrf().disable();
 	}
 	
 	@Override

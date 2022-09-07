@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="produto")
 public class Produto {
@@ -27,6 +29,7 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	public Status status;
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
 	private User user;
 	
 	public Produto() {}
@@ -81,6 +84,14 @@ public class Produto {
 	public void setStatus(Status status) {
 		this.status = status;
 		
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }
