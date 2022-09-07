@@ -1,14 +1,11 @@
 package com.kai.wang.mvc.mudi.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kai.wang.mvc.mudi.model.Produto;
@@ -23,10 +20,10 @@ public class HomeController {
 	private ProdutoService produtoService;
 	
 	@GetMapping
-	public String home(Model model, Principal principal)
+	public String home(Model model)
 	{
 		
-		List<Produto> produtos =  produtoService.findByStatus(Status.ENTREGUES);
+		List<Produto> produtos =  produtoService.buscarPorStatus(Status.ENTREGUES);
 		
 		model.addAttribute("produtos", produtos);
 		

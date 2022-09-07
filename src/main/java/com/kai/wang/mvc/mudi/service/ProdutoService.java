@@ -3,18 +3,15 @@ package com.kai.wang.mvc.mudi.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.kai.wang.mvc.mudi.model.Produto;
 import com.kai.wang.mvc.mudi.model.Status;
+import com.kai.wang.mvc.mudi.model.User;
 import com.kai.wang.mvc.mudi.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
-	
 	
 	private final ProdutoRepository pr;
 	public ProdutoService(ProdutoRepository pr)
@@ -41,19 +38,18 @@ public class ProdutoService {
 		this.pr.deleteById(id);
 	}
 
-	public List<Produto> findByStatus(Status status) {
+	public List<Produto> buscarPorStatus(Status status) {
 		
 		List<Produto> produtos = this.pr.findByStatus(status);
 		return produtos;
 	}
-	public List<Produto> buscarPorUser(String user)
+	public List<Produto> buscarPorUser(User user)
 	{
 		return this.pr.findByUser(user);
 	}
 
-	public List<Produto> findByStatusAndUser(Status status, String name) {
-		
-		return this.pr.findByStatusAndUser(status, name);
+	public List<Produto> buscarPorStatusEUser(Status status, User user){
+		return this.pr.findByStatusAndUser(status, user);
 	}
 	
 	public Optional<Produto> findById(Long id)

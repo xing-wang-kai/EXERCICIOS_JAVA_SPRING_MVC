@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kai.wang.mvc.mudi.model.Produto;
-import com.kai.wang.mvc.mudi.model.Status;
 import com.kai.wang.mvc.mudi.service.ProdutoService;
 
 @RestController
