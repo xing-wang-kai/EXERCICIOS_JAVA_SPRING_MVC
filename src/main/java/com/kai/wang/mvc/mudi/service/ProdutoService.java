@@ -44,13 +44,13 @@ public class ProdutoService {
 
 	public Page<Produto> buscarPorStatus(Status status) {
 		
-		Pageable pagina = PageRequest.of(0, 3, Sort.by(Sort.Direction.ASC, "status"));
+		Pageable pagina = PageRequest.of(0, 5, Sort.by(Sort.Direction.ASC, "status"));
 		Page<Produto> produtos = this.pr.findByStatus(status, pagina);
 		return produtos;
 	}
 	public Page<Produto> buscarPorUser(User user)
 	{
-		Pageable pagina = PageRequest.of(0, 3, Sort.by(Sort.Direction.ASC, "status"));
+		Pageable pagina = PageRequest.of(0, 5, Sort.by(Sort.Direction.ASC, "status"));
 		return this.pr.findByUser(user, pagina);
 	}
 

@@ -10,7 +10,7 @@
 
 
 <header th:fragment="basecabecalho">
-    <div class="row">
+    <div class="">
         <div class="p-3 mb-2 bg-primary text-white d-flex justify-content-between container">
                 <div>
                     <a class="text-light ml-3 mr-3" href="/home"><h1>MUDI</h1></a>
@@ -24,13 +24,16 @@
         </div>
     </div>
     <div class="container">
-        <div class="row" sec:authorize="isAuthenticated()">
+        <div class="" sec:authorize="isAuthenticated()">
             <ul class="nav">
                 <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                    <a class="nav-link" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" th:href="@{usuario/produto}">Meus Pedidos</a>
+                    <a class="nav-link" href="/usuario/produto">Meus Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/oferta/formulario">Faça uma oferta!</a>
                 </li>
             </ul>
         </div>

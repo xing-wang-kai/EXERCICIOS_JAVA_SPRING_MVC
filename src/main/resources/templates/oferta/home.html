@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{base :: cabecalho}"></head>
+<div th:replace="~{base :: basecabecalho}"></div>
+<body onload="onLoad()" >
+    <div id="ofertas" class="container-sm">
+        <div class="mb3">
+            <div th:replace="~{base :: jumbotron('Faça agora mesmo sua Oferta!!')}"></div>
+            <div>
+                <nav class="navbar navbar-expand-sm bg-light">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"> 
+                                    <a class="nav-link active" aria-current="page" th:href="@{/usuario/produto}">Todos</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a th:classappend="${status} == 'aguardando' ? 'active'" class="nav-link" aria-current="page" th:href="@{/usuario/produto/aguardando}">Aguardando</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a th:classappend="${status} == 'aprovados' ? 'active'" class="nav-link" aria-current="page" th:href="@{/usuario/produto/aprovados}">Aprovado</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a th:classappend="${status} == 'entregues' ? 'active'" class="nav-link" aria-current="page" th:href="@{/usuario/produto/entregues}">Entregue</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="nav-link" aria-current="page" href="pedido/formulario"><button type="button" class="btn btn-outline-secondary">Novo</button></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="card mt-3" v-for="produto in produtos">
+             <div class="card-header alert alert-warning" >{{ produto.nome }}</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-9">
+                        <div class="row">
+                            <div class="col-md-6">Valor: <input v-vind:value="produto.valor"/></div>
+                            <div class="col-md-6">Data Entrega: <input v-bind:value="produto.dataEntrega"/></div>
+                        </div>
+                        <Label for="urlProduto">Produto: </Label>
+                            <a class="form-control" v-bind:href="produto.urlProduto">{{ produto.nome }}</a>
+                        <div>
+                            <label for="descricao">Discrição: </label>
+                            <textarea class="form-control" id="descricao" name="descricao" >{{ produto.descricao }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-3 mt-3">
+                        <img class="img-thumbnail" v-bind:src="produto.urlImagem" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function onLoad(){
+             
+            var app = new Vue({
+                el: '#ofertas',
+                data: {
+                    produtos: []
+                },
+                mounted(){
+                    axios.get("http://localhost:8080/api/produtos/aguardando")
+                        .then( response => {
+                            this.produtos = response.data.content;
+                        })
+                    console.log(this.produtos);
+                }
+            });
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+<div th:replace="~{base :: rodape}"></div>
+</html>
