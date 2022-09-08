@@ -36,16 +36,39 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-9">
-                        <div class="row">
-                            <div class="col-md-6">Valor: <input v-vind:value="produto.valor"/></div>
-                            <div class="col-md-6">Data Entrega: <input v-bind:value="produto.dataEntrega"/></div>
-                        </div>
+                        
                         <Label for="urlProduto">Produto: </Label>
                             <a class="form-control" v-bind:href="produto.urlProduto">{{ produto.nome }}</a>
                         <div>
                             <label for="descricao">Discrição: </label>
-                            <textarea class="form-control" id="descricao" name="descricao" >{{ produto.descricao }}</textarea>
+                            <textarea disabled class="form-control" id="descricao" v-model="produto.descricao" name="descricao" >{{ produto.descricao }}</textarea>
                         </div>
+
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                Valor: <input  v-bind:class="{'is-invalid':produto.errors.valor !== '' }" class="form-control" v-model="produto.valor"/>
+                                <div v-if="produto.errors.valor" class="invalid-feedback">
+                                    {{ produto.errors.valor }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                Data Entrega: <input v-bind:class="{'is-invalid':produto.errors.dataEntrega !== '' }" class="form-control" v-model="produto.dataEntrega"/>
+                                <div v-if="produto.errors.dataEntrega" class="invalid-feedback">
+                                    {{ produto.errors.dataEntrega }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <label for="comentario">comentário: </label>
+                            <textarea class="form-control" id="comentario" v-model="produto.comentario" name="descricao" ></textarea>
+                        </div>
+
+                        <div>
+                            <button v-if="produto.ofertaEnviada" class="btn mt-3 btn-success" >Oferta Enviada</button>
+                            <button v-else v-on:click="enviarOferta(produto)" class="btn mt-3 btn-primary" type="submit">Enviar Oferta</button>
+                        </div>
+
                     </div>
                     <div class="col-12 col-sm-3 mt-3">
                         <img class="img-thumbnail" v-bind:src="produto.urlImagem" alt="...">
@@ -65,9 +88,40 @@
                 mounted(){
                     axios.get("http://localhost:8080/api/produtos/aguardando")
                         .then( response => {
+
+                            response.data.content.forEach(produto=> {
+                                    produto.ofertaEnviada=false;
+                                    produto.errors = {
+                                        valor: "" ,
+                                        dataEntrega: ""
+                                    }
+                                });
                             this.produtos = response.data.content;
                         })
                     console.log(this.produtos);
+                },
+                methods: {
+                    enviarOferta: function (produto){
+
+                        produto.errors = {
+                            valor: "" ,
+                            dataEntrega: ""
+                        }
+                        
+                        axios.post("http://localhost:8080/api/ofertas", {
+                            pedidoId: produto.id,
+                            valor: produto.valor,
+                            dataEntrega: produto.dataEntrega,
+                            comentario: produto.comentario
+                        })
+                            .then(produto.ofertaEnviada = true)
+                            .catch(error=>{
+                                error.response.data.errors.forEach(err =>{
+                                    produto.errors[err.field] = err.defaultMessage;
+
+                                })
+                            });
+                    }
                 }
             });
 

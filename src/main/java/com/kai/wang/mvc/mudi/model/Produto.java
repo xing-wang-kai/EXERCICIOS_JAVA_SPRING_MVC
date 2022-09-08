@@ -1,7 +1,9 @@
 package com.kai.wang.mvc.mudi.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,8 +35,21 @@ public class Produto {
 	@JsonIgnore
 	private User user;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Oferta> ofertas;
+	
 	public Produto() {}
 	
+	public List<Oferta> getOfertas() {
+		return ofertas;
+	}
+
+	public void setOfertas(List<Oferta> ofertas) {
+		this.ofertas = ofertas;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -92,6 +108,11 @@ public class Produto {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("[ id: %d, nome: %s, valor: %d, ]", this.getId(), this.getNome(), this.getValor());
 	}
 
 }
