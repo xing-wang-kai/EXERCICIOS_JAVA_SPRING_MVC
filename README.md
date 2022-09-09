@@ -200,6 +200,6 @@ Lembre de rodar no SQL os comandos para criar usuários.
 ## Pessoas Contribuidoras e Desenvolvedoras do Projeto
 
 CRIADO COM :heart: POR KAI WANG!
-<img src="./src/main/resources/img/image06.png" width="100px" heigth="100px"/>
+<img src="./src/main/resources/img/kai06.png" width="100px" heigth="100px"/>
 
 ## Licença
